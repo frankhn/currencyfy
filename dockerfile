@@ -4,12 +4,11 @@ LABEL maintainer="Frankhn harfrank2@gmail.com"
 
 WORKDIR /opt/web
 COPY package.json package-lock.json ./
-RUN npm install --silent
+RUN npm install
 
 ENV PATH="./node_modules/.bin:$PATH"
 
 COPY . ./
-
 RUN npm run build
 
 FROM nginx:1.17-alpine
