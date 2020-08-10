@@ -1,10 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Row, Col, InputGroup, InputGroupText, Input } from 'reactstrap'
-import ReactFlagsSelect from "react-flags-select";
-import Select from 'react-select'
+import ReactFlagsSelect from "./currencies/index";
 
 interface Initial {
-    countryA: string
+    baseCurrency: string
     countryB: string
     amountA: number
     amountB: number
@@ -13,53 +12,54 @@ interface Initial {
 export interface IformProps {
     initial: Initial
     change: React.ChangeEventHandler
+    countryChange: any
+    baseCountry: any
 };
 
 
 const form: React.FC<IformProps> = (props: IformProps) => {
 
-    const options = [
-        {
-            value: "",
-        label: `<span><i className="france flag"></i> European EUROS</span>`
-        }
-    ]
-
+    
     return (
-        <Row>
+        <div className="form-wrapper">
+            <Row>
             <Col>
-                <Select
-                    options={ options } />
-                {/* <InputGroup>
+            <InputGroup>
                     <InputGroupText>
-                        <Select
-                        options={options} />
+                        <ReactFlagsSelect
+                            defaultCountry={ props.initial.baseCurrency } 
+                            onSelect={props.baseCountry}/>
                     </InputGroupText>
                     <Input
                         name="amountA"
                         placeholder="amount"
-                        onChange={ props.change }
                         defaultValue={ props.initial.amountA }
+                        onChange={ props.change }
                         type="number"
                         className="amount" />
-                </InputGroup> */}
+                </InputGroup>
             </Col>
+            </Row>
+            <Row className="form-wrapper--second">
             <Col>
                 <InputGroup>
                     <InputGroupText>
                         <ReactFlagsSelect
-                            defaultCountry={ props.initial.countryB } />
+                            defaultCountry={ props.initial.countryB }
+                            onSelect={props.countryChange } />
                     </InputGroupText>
                     <Input
                         name="amountB"
                         placeholder="amount"
-                        defaultValue={ props.initial.amountB }
+                        disabled={true}
+                        value={props.initial.amountB}
                         onChange={ props.change }
                         type="number"
                         className="amount" />
                 </InputGroup>
             </Col>
         </Row>
+        </div>
     );
 }
 
