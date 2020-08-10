@@ -90,6 +90,13 @@ class App extends Component<Props, State> {
             Please check your internet connection
             </div>
         }
+         <div style={{ textAlign: "center", marginTop: '5rem'}}>
+          <h6>&nbsp;
+            <a target="_blank" href="https://github.com/frankhn/currencyfy#available-scripts">
+              Documenation
+              </a>
+            </h6>
+        </div>
       </div>
     );
   }
