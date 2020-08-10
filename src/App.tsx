@@ -68,7 +68,15 @@ class App extends Component<Props, State> {
     return (
       <div className="container"
         style={{ margin: "20vh auto", padding: "2rem 3rem" }}>
-        <p>{this.state.error}</p>
+        <div style={{ textAlign: "center"}}>
+          <h1>Currencyfy</h1>
+          <h5>This is a Currency converter with live rates from 
+            the &nbsp;
+            <a target="_blank" href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">
+              European central bank
+              </a>
+            </h5>
+        </div>
         {
           loading 
           ? <Spinner />
