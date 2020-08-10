@@ -92,7 +92,7 @@ class App extends Component<Props, State> {
         }
          <div style={{ textAlign: "center", marginTop: '5rem'}}>
           <h6>&nbsp;
-            <a target="_blank" href="https://github.com/frankhn/currencyfy#available-scripts">
+            <a target="_blank" href="https://github.com/frankhn/currencyfy#currencyfy">
               Documenation
               </a>
             </h6>
