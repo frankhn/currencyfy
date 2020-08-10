@@ -26,10 +26,20 @@
 }
 
 .input-group {
-  border: 1px solid #ccc;
-  border-radius: .2rem;
+  /* border: 1px solid #ccc;
+  border-radius: .2rem; */
 }
 .amount {
   height: 3rem !important;
   border: none !important;
+  background-color: #e9ecef !important;
+}
+
+.form-wrapper {
+  max-width: 20rem;
+  margin: 3rem auto;
+}
+
+.form-wrapper--second {
+  margin-top: 3rem;
 }
