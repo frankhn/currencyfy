@@ -78,7 +78,7 @@ class App extends Component<Props, State> {
             </h5>
         </div>
         {
-          loading 
+          loading && loading
           ? <Spinner />
           : rates && rates
             ? <Form
@@ -86,7 +86,9 @@ class App extends Component<Props, State> {
                 initial={{...this.state, amountB }}
                 baseCountry={this.handleBaseCountryChange}
                 countryChange={this.handleCountryChange} />
-          : <Spinner />
+          : <div style={{ textAlign: "center"}}>
+            Please check your internet connection
+            </div>
         }
       </div>
     );
