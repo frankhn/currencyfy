@@ -13,21 +13,15 @@ class ReactFlagsSelect extends Component {
 			defaultCountry,
 			filteredcurrencies: []
 		}
-
-		this.toggleOptions = this.toggleOptions.bind(this);
-		this.closeOptions = this.closeOptions.bind(this);
-		this.onSelect = this.onSelect.bind(this);
-		this.filterSearch = this.filterSearch.bind(this);
-		this.setcurrencies = this.setcurrencies.bind(this);
 	}
 
-	toggleOptions() {
+	toggleOptions = () => {
 		!this.state.disabled && this.setState({
 			openOptions: !this.state.openOptions
 		});
 	}
 
-	toggleOptionsWithKeyboard(evt) {
+	toggleOptionsWithKeyboard = (evt) => {
 		evt.preventDefault();
 		if (evt.keyCode === 27) {
 			//esc key: hide options
@@ -37,7 +31,7 @@ class ReactFlagsSelect extends Component {
 		}
 	}
 
-	closeOptions(event) {
+	closeOptions = (event) => {
 		if (event.target !== this.refs.selectedFlag && event.target !== this.refs.flagOptions && event.target !== this.refs.filterText ) {
 			this.setState({
 				openOptions: false
@@ -45,7 +39,7 @@ class ReactFlagsSelect extends Component {
 		}
 	}
 
-	onSelect(countryCode) {
+	onSelect = (countryCode) => {
 		this.setState({
 			selected: countryCode,
 			filter : ''
@@ -53,7 +47,7 @@ class ReactFlagsSelect extends Component {
 		this.props.onSelect && this.props.onSelect(countryCode);
 	}
 
-	onSelectWithKeyboard(evt, countryCode) {
+	onSelectWithKeyboard = (evt, countryCode) => {
 		evt.preventDefault();
 		if (evt.keyCode === 13) {
 			//enter key: select
@@ -65,7 +59,7 @@ class ReactFlagsSelect extends Component {
 		}
 	}
 
-	updateSelected(countryCode) {
+	updateSelected = (countryCode) => {
 		let isValid = currencies[countryCode];
 
 		isValid && this.setState({
@@ -73,17 +67,7 @@ class ReactFlagsSelect extends Component {
 		})
 	}
 
-	filterSearch(evt) {
-		let filterValue = evt.target.value;
-		let filteredcurrencies = filterValue && this.state.currencies.filter(key => {
-			let label = this.props.customLabels[key] || currencies[key];
-			return  label && label.match(new RegExp(filterValue, 'i'))
-		}) ;
-
-		this.setState({filter : filterValue, filteredcurrencies : filteredcurrencies });
-	}
-
-	setcurrencies() {
+	setcurrencies = () => {
 		const fullcurrencies = Object.keys(currencies);
 
 		let selectcurrencies = this.props.currencies && this.props.currencies.filter( country => {
@@ -161,11 +145,6 @@ class ReactFlagsSelect extends Component {
 
 				{this.state.openOptions &&
 					<ul tabIndex="-1" role="listbox" ref="flagOptions" style={{fontSize: `${optionsSize}px`}} className={`flag-select__options ${alignClass}`}>
-						{this.props.searchable && (
-							<div className="filterBox">
-								<input type="text" placeholder={this.props.searchPlaceholder} ref="filterText"  onChange={this.filterSearch}/>
-							</div>
-						)}
 
 						{(this.state.filter ? this.state.filteredcurrencies : this.state.currencies).map(countryCode =>
 							(<li
