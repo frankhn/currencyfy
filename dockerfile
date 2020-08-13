@@ -3,7 +3,7 @@ FROM node:14.1-alpine AS builder
 LABEL maintainer="Frankhn harfrank2@gmail.com"
 
 WORKDIR /opt/web
-COPY package.json package-lock.json ./
+COPY package.json ./
 RUN npm install
 
 ENV PATH="./node_modules/.bin:$PATH"
