@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import 'react-flags-select/css/react-flags-select.css';
 import './App.css'
 import Form from './resources/form'
-import request from './resources/config/Axios'
 import { connect } from 'react-redux';
 import { AppState } from './store';
 import { checkRates } from './store/actions'
