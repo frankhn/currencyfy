@@ -84,8 +84,6 @@
   docker push currencyfyContainerRegistryT0023.azurecr.io/currencyfy:v1
   ```
 
-  I'm also adding a pipeline to this repo such that if you raise a pull request it will be automatically deployed on azure.
-
 ## Authors
 
 * **Frank Harerimana** - *Initial work* - [Frankhn](https://github.com/frankhn)
