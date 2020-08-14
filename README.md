@@ -83,6 +83,8 @@
   ```
   docker push currencyfyContainerRegistryT0023.azurecr.io/currencyfy:v1
   ```
+- I added an azure pipeline to this repo. Feel free to try it out
+By raising a pull request.
 
 ## Authors
 
