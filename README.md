@@ -54,7 +54,35 @@
 
 ### Azure deployement procedure
 
-  developing ...
+  We will be using azure CLI in most cases.
+
+- First things first, make sure you created an account on [Azure Cloud](https://azure.microsoft.com/en-us/free/)
+- Once your done, Download [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) on your machine.
+
+###### Time for the real work
+
+- The first thing to do here is to create a resource group within you terminal
+  ```
+  az group create --name currencfyResourceGroup --location ukwest
+  ```
+- With the resource group we created we can then create a container registry
+  to host our docker image. 
+
+  ```
+  az acr create --resource-group currencfyResourceGroup --name currencyfyContainerRegistryT0023 --sku Basic
+  ```
+- Login to that registry.
+  ```
+  az acr login --name currencyfyContainerRegistryT0023
+  ```
+  - With a docker image we build earlier, tag the image with thi command
+
+  ```docker tag currencyfy currencyfyContainerRegistryT0023.azurecr.io/currencyfy:v1
+  ```
+  Push the image
+  ```
+  docker push currencyfyContainerRegistryT0023.azurecr.io/currencyfy:v1
+  ```
 
 ## Authors
 
